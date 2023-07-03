@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 374
-  Top = 125
+  Left = 428
+  Top = 190
   Width = 772
-  Height = 593
+  Height = 591
   Caption = 'Form1'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -251,5 +251,26 @@ object Form1: TForm1
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+  end
+  object zqry1: TZQuery
+    Params = <>
+    Left = 280
+    Top = 112
+  end
+  object ds1: TDataSource
+    Left = 280
+    Top = 160
+  end
+  object con1: TZConnection
+    ControlsCodePage = cGET_ACP
+    UTF8StringsAsWideField = False
+    AutoEncodeStrings = False
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'uasvisual'
+    Protocol = 'mysql-5'
+    LibraryLocation = 'F:\Uas\libmysql.dll'
+    Left = 280
+    Top = 56
   end
 end
