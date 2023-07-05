@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, ExtCtrls,
   DB, ADODB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
-  ZAbstractConnection, ZConnection;
+  ZAbstractConnection, ZConnection, CheckLst;
 
 type
   TForm1 = class(TForm)
@@ -37,8 +37,6 @@ type
     btn1: TButton;
     lbl14: TLabel;
     lbl15: TLabel;
-    lst3: TListBox;
-    lst4: TListBox;
     dbgrd1: TDBGrid;
     con1: TZConnection;
     ds1: TDataSource;
@@ -48,6 +46,8 @@ type
     btn4: TButton;
     btn5: TButton;
     btn6: TButton;
+    chklst1: TCheckListBox;
+    chklst2: TCheckListBox;
     procedure posisiawal;
     procedure bersih;
     procedure FormCreate(Sender: TObject);
