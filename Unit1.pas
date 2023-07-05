@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, ExtCtrls,
   DB, ADODB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
-  ZAbstractConnection, ZConnection;
+  ZAbstractConnection, ZConnection, CheckLst;
 
 type
   TForm1 = class(TForm)
@@ -23,11 +23,8 @@ type
     edt1: TEdit;
     edt2: TEdit;
     edt3: TEdit;
-    lst1: TListBox;
-    lst2: TListBox;
     rg1: TRadioGroup;
     edt4: TEdit;
-    edt5: TEdit;
     edt6: TEdit;
     grp1: TGroupBox;
     lbl11: TLabel;
@@ -37,8 +34,6 @@ type
     btn1: TButton;
     lbl14: TLabel;
     lbl15: TLabel;
-    lst3: TListBox;
-    lst4: TListBox;
     dbgrd1: TDBGrid;
     con1: TZConnection;
     ds1: TDataSource;
@@ -48,6 +43,11 @@ type
     btn4: TButton;
     btn5: TButton;
     btn6: TButton;
+    chklst1: TCheckListBox;
+    chklst2: TCheckListBox;
+    cbb1: TComboBox;
+    cbb2: TComboBox;
+    cbb3: TComboBox;
     procedure posisiawal;
     procedure bersih;
     procedure FormCreate(Sender: TObject);
@@ -78,7 +78,6 @@ begin
       edt2.Clear;
       edt3.Clear;
       edt4.Clear;
-      edt5.Clear;
       edt6.Clear;
 end;
 
@@ -89,11 +88,11 @@ begin
       btn3.Enabled:=False;
       btn4.Enabled:=False;
       btn5.Enabled:=False;
+      btn6.Enabled:=False;
       edt1.Enabled:=False;
       edt2.Enabled:=False;
       edt3.Enabled:=False;
       edt4.Enabled:=False;
-      edt5.Enabled:=False;
       edt6.Enabled:=False;
 end;
 
@@ -106,34 +105,44 @@ procedure TForm1.btn2Click(Sender: TObject);
 begin
 bersih;
 btn1.Enabled:= false;
-btn2.Enabled:= True;
-btn3.Enabled:= False;
-btn4.Enabled:= False;
-btn5.Enabled:= True;
+btn2.Enabled:= False;
+btn3.Enabled:= True;
+btn4.Enabled:= True;
+btn5.Enabled:= False;
+btn6.Enabled:= False;
 edt1.Enabled:= True;
 edt2.Enabled:= True;
 edt3.Enabled:= True;
 edt4.Enabled:= True;
-edt5.Enabled:= True;
+edt6.Enabled:= True;
+//edt5.Enabled:= True;
 end;
 
 procedure TForm1.btn3Click(Sender: TObject);
 begin
   if edt1.Text =''then
   begin
-    ShowMessage('NAMA KOSTUMER TIDAK BOLEH KOSONG!');
-    end else
-    if edt2.Text=''then
-    begin
-      ShowMessage('NO TELP TIDAK BOLEH KOSONG');
-      end else
-      if edt3.Text=''then
-      begin
-        ShowMessage('ALAAMT TIDAK BOLEH KOSONG');
-        end else
+  ShowMessage('ID SISWA TIDAK BOLEH KOSONG!');
+  end else
+  if edt2.Text =''then
+  begin
+  ShowMessage('NAMA SISWA TIDAK BOLEH KOSONG!');
+  end else
+  if edt3.Text=''then
+  begin
+  ShowMessage('NO NISN TIDAK BOLEH KOSONG');
+  end else
+  if edt4.Text=''then
+  begin
+  ShowMessage('NAMA ORTU KELAS TIDAK BOLEH KOSONG');
+  end else
+  if edt6.Text='' then
+  begin
+  ShowMessage('NO TELP TIDAK BOLEH KOSONG');
+  end;
         begin
           zqry1.SQL.Clear;
-          zqry1.SQL.Add('insert into siswa values(null,"'+edt1.Text+'","'+edt2.Text+'","'+edt3.Text+'","'+edt4.Text+'","'+edt5.Text+'")');
+          zqry1.SQL.Add('insert into siswa values(null,"'+edt1.Text+'","'+edt2.Text+'","'+edt3.Text+'","'+edt4.Text+'","'+edt6.Text+'")');
           zqry1.ExecSQL;
 
           zqry1.SQL.Clear;
@@ -146,7 +155,7 @@ end;
 
 procedure TForm1.btn5Click(Sender: TObject);
 begin
-  if (edt1.Text= '')or (edt2.Text ='')or(edt3.Text= '')or (edt4.Text ='')or (edt5.Text ='') then
+  if (edt1.Text= '')or (edt2.Text ='')or(edt3.Text= '')or (edt4.Text ='')or (edt6.Text ='') then
 begin
 ShowMessage('INPUTAN WAJIB DIISI!');
 end else
@@ -171,12 +180,12 @@ edt1.Text:= zqry1.Fields[1].AsString;
 edt2.Text:= zqry1.Fields[2].AsString;
 edt3.Text:= zqry1.Fields[3].AsString;
 edt4.Text:= zqry1.Fields[4].AsString;
-edt5.Text:= zqry1.Fields[5].AsString;
+edt6.Text:= zqry1.Fields[5].AsString;
 edt1.Enabled:= True;
 edt2.Enabled:= True;
 edt3.Enabled:= True;
 edt4.Enabled:= True;
-edt5.Enabled:= True;
+//edt5.Enabled:= True;
 
 btn1.Enabled:= false;
 btn2.Enabled:= False;
@@ -195,7 +204,7 @@ edt1.Enabled:= True;
 edt2.Enabled:= True;
 edt3.Enabled:= True;
 edt4.Enabled:= True;
-edt5.Enabled:= True;
+//edt5.Enabled:= True;
 end;
 
 procedure TForm1.btn6Click(Sender: TObject);
@@ -203,7 +212,7 @@ begin
 if MessageDlg('APAKAH YAKIN MENGHAPUS DATA INI?',mtWarning,[mbYes,mbNo],0)= mryes then
 begin
 zqry1.SQL.Clear;
-zqry1.SQL.Add(' delete from kustomer where idkustomer="'+id+'"');
+zqry1.SQL.Add(' delete from kustomer where idkustomer="');
 zqry1. ExecSQL;
 zqry1.SQL.Clear;
 zqry1.SQL.Add('select * from kustomer');
@@ -214,6 +223,7 @@ end else
 begin
 ShowMessage('DATA BATAL DIHAPUS');
 posisiawal;
+end;
 end;
 
 end.
