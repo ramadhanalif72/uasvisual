@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 582
-  Top = 177
+  Left = 401
+  Top = 120
   Width = 715
-  Height = 591
+  Height = 590
   Caption = 'Form1'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -225,110 +225,13 @@ object Form1: TForm1
       TabOrder = 1
     end
   end
-  object btn2: TButton
-    Left = 320
-    Top = 304
-    Width = 105
-    Height = 33
-    Caption = 'NEW'
-    TabOrder = 10
-    OnClick = btn2Click
-  end
-  object btn3: TButton
-    Left = 456
-    Top = 304
-    Width = 105
-    Height = 33
-    Caption = 'SIMPAN'
-    TabOrder = 11
-  end
-  object btn4: TButton
-    Left = 320
-    Top = 352
-    Width = 105
-    Height = 33
-    Caption = 'EDIT'
-    TabOrder = 12
-  end
-  object btn5: TButton
-    Left = 456
-    Top = 352
-    Width = 105
-    Height = 33
-    Caption = 'DELETE'
-    TabOrder = 13
-  end
-  object dbgrd1: TDBGrid
-    Left = 32
-    Top = 408
-    Width = 633
-    Height = 121
-    DataSource = ds1
-    TabOrder = 14
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'id'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'nama'
-        Width = 189
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'nisn'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'kelas'
-        Width = 155
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'jurusan'
-        Width = 203
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'jeniskelamin'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'namawali'
-        Width = 76
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'namaortu'
-        Width = 218
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'telepon'
-        Visible = True
-      end>
-  end
   object lst3: TListBox
     Left = 432
     Top = 216
     Width = 185
     Height = 25
     ItemHeight = 13
-    TabOrder = 15
+    TabOrder = 10
   end
   object lst4: TListBox
     Left = 432
@@ -336,56 +239,91 @@ object Form1: TForm1
     Width = 185
     Height = 25
     ItemHeight = 13
+    TabOrder = 11
+  end
+  object dbgrd1: TDBGrid
+    Left = 48
+    Top = 408
+    Width = 609
+    Height = 129
+    DataSource = ds1
+    TabOrder = 12
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object btn2: TButton
+    Left = 304
+    Top = 296
+    Width = 105
+    Height = 41
+    Caption = 'NEW'
+    TabOrder = 13
+    OnClick = btn2Click
+  end
+  object btn3: TButton
+    Left = 416
+    Top = 296
+    Width = 105
+    Height = 41
+    Caption = 'SIMPAN'
+    TabOrder = 14
+    OnClick = btn3Click
+  end
+  object btn4: TButton
+    Left = 536
+    Top = 296
+    Width = 105
+    Height = 41
+    Caption = 'BATAL'
+    TabOrder = 15
+  end
+  object btn5: TButton
+    Left = 296
+    Top = 344
+    Width = 105
+    Height = 41
+    Caption = 'EDIT'
     TabOrder = 16
+    OnClick = btn5Click
   end
   object btn6: TButton
-    Left = 576
+    Left = 416
     Top = 344
-    Width = 81
+    Width = 105
     Height = 41
-    Caption = 'batal'
+    Caption = 'HAPUS'
     TabOrder = 17
+    OnClick = btn6Click
   end
-  object ds1: TDataSource
-    DataSet = qry1
-    Left = 280
-    Top = 152
-  end
-  object con1: TADOConnection
-    Connected = True
-    ConnectionString = 
-      'Provider=MSDASQL.1;Password="";Persist Security Info=True;User I' +
-      'D=root;Data Source=visualuas'
-    LoginPrompt = False
-    Left = 280
-    Top = 48
-  end
-  object qry1: TADOQuery
-    Active = True
-    Connection = con1
-    CursorType = ctStatic
-    Parameters = <>
-    SQL.Strings = (
-      'select * from siswa')
-    Left = 280
-    Top = 96
-  end
-  object con2: TZConnection
+  object con1: TZConnection
     ControlsCodePage = cGET_ACP
     UTF8StringsAsWideField = False
     AutoEncodeStrings = False
+    Connected = True
     HostName = 'localhost'
     Port = 3306
-    Database = 'uasvisual'
+    Database = 'visualuas'
     User = 'root'
     Protocol = 'mysql'
-    LibraryLocation = 'F:\Uas\libmysql.dll'
-    Left = 296
-    Top = 224
+    LibraryLocation = 'C:\Program Files (x86)\Borland\Zeos703\libmysql.dll'
+    Left = 288
+    Top = 232
+  end
+  object ds1: TDataSource
+    DataSet = zqry1
+    Left = 280
+    Top = 112
   end
   object zqry1: TZQuery
+    Connection = con1
+    Active = True
+    SQL.Strings = (
+      'select * from siswa')
     Params = <>
-    Left = 200
-    Top = 16
+    Left = 280
+    Top = 176
   end
 end
